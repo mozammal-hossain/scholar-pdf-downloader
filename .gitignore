@@ -11,3 +11,7 @@ build/
 *.swo
 ~*
 .claude/local/
+
+CLAUDE.md
+PRD.md
+TECH_DESIGN.md
