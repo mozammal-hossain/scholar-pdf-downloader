@@ -2,37 +2,90 @@
 
 Chrome extension for batch downloading free PDFs from Google Scholar search results with automatic organization and metadata extraction.
 
-## Quick Start
+## Installation
 
-### 1. Generate Icons
-
-Install dependencies and generate extension icons:
+### Step 1: Download / Clone Repository
 
 ```bash
-npm install
-npm run generate-icons
+# Clone from GitHub
+git clone https://github.com/mozammal-hossain/scholar-pdf-downloader.git
+cd scholar-pdf-downloader
+
+# Or download ZIP and extract
 ```
 
-This creates PNG icons (16x16, 48x48, 128x128) in the `icons/` directory.
+### Step 2: Load in Chrome
 
-### 2. Load in Chrome
+1. Open **`chrome://extensions`** in browser address bar
+2. Enable **"Developer mode"** toggle (top right corner)
+3. Click **"Load unpacked"** button
+4. Select the `scholar-pdf-downloader` folder
+5. Extension loads and icon appears in toolbar
 
-1. Open `chrome://extensions`
-2. Enable "Developer mode" (top right toggle)
-3. Click "Load unpacked"
-4. Select this project root directory
+Extension is now active and ready to use.
 
-The extension appears in your toolbar and is ready to use.
+## How to Use
 
-## Usage
+### Basic Usage (3 Steps)
 
-1. **Navigate to Google Scholar** search results
-2. **Click the extension icon** in your toolbar
-3. **Click "Download All"** to start batch downloading
-4. **Monitor progress** in the popup UI
-   - See count of found papers
-   - Watch real-time progress bar
-   - Check current file being processed
+1. **Go to Google Scholar**
+   - Navigate to https://scholar.google.com
+   - Search for papers (e.g., "artificial intelligence", "machine learning")
+   - Wait for results page to load
+
+2. **Open Extension Popup**
+   - Click Scholar PDF Downloader icon in Chrome toolbar
+   - Popup shows: `Found: [number] papers`
+   - If 0 papers found, scroll Scholar page or refresh
+
+3. **Download All Papers**
+   - Click **"Download All"** button
+   - Watch progress bar fill in real-time
+   - Downloads start automatically to `Downloads/scholar/[query]/` folder
+   - Each PDF organized by search query
+
+### During Download
+
+**Popup shows:**
+- **Found**: Total papers detected with PDF links
+- **Progress**: Current download count (e.g., 3/10)
+- **Current file**: Paper title being downloaded
+- **Status**: Success, pause, or error messages
+
+**Controls:**
+- **Pause**: Stop downloads mid-batch, resume later
+- **Resume**: Continue paused downloads
+- **Clear**: Reset found papers count
+
+### After Download Completes
+
+**Files saved:**
+```
+Downloads/
+└── scholar/
+    └── artificial intelligence/
+        ├── Author1_Title_2023.pdf
+        ├── Author2_Paper_2024.pdf
+        └── metadata.json    ← full paper details
+```
+
+**metadata.json** contains:
+- Paper title, authors, year, journal
+- Citation count, DOI, Scholar URL
+- Download status (success/skipped/error)
+- Timestamps
+
+### Settings & Stats
+
+1. Click **"Settings"** in popup → Opens Options page
+2. Configure:
+   - **Concurrent Downloads**: How many PDFs download at once (1-10, default 2)
+   - **Delay Between**: Wait time between downloads in ms (default 500)
+   - **Rate Limit Pause**: Minutes to wait if site blocks requests (default 10)
+3. Click **"View Stats"** to see:
+   - Total downloaded
+   - Total failed
+   - Total skipped (duplicates)
 
 ## Features
 
