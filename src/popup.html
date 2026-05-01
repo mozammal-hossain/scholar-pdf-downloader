@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Scholar PDF Downloader</title>
+  <link rel="stylesheet" href="styles/popup.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Scholar PDF Downloader</h1>
+
+    <div class="status-section">
+      <div class="status-box">
+        <div class="status-item">
+          <span class="label">Found:</span>
+          <span class="value" id="foundCount">0</span>
+        </div>
+        <div class="status-item">
+          <span class="label">Progress:</span>
+          <span class="value" id="progressValue">0/0</span>
+        </div>
+        <div class="status-item" id="currentFileSection" style="display: none;">
+          <span class="label">Current:</span>
+          <span class="value truncate" id="currentFile"></span>
+        </div>
+      </div>
+
+      <div class="progress-bar">
+        <div class="progress-fill" id="progressFill"></div>
+      </div>
+    </div>
+
+    <div class="controls-section">
+      <button id="downloadBtn" class="btn btn-primary">Download All</button>
+      <button id="pauseBtn" class="btn btn-secondary" disabled>Pause</button>
+      <button id="resumeBtn" class="btn btn-secondary" disabled style="display: none;">Resume</button>
+      <button id="clearBtn" class="btn btn-secondary">Clear</button>
+    </div>
+
+    <div id="statusMessage" class="status-message"></div>
+
+    <details class="advanced-section">
+      <summary>Advanced</summary>
+      <div class="advanced-content">
+        <button id="settingsBtn" class="btn btn-text">Settings</button>
+        <button id="statsBtn" class="btn btn-text">View Stats</button>
+        <button id="clearStorageBtn" class="btn btn-danger">Clear All Data</button>
+      </div>
+    </details>
+  </div>
+
+  <script src="utils/helpers.js"></script>
+  <script src="utils/storage.js"></script>
+  <script src="popup.js"></script>
+</body>
+</html>

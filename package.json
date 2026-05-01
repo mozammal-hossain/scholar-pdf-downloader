@@ -1,0 +1,10 @@
+{
+  "name": "scholar-pdf-downloader",
+  "version": "1.0.0",
+  "description": "Chrome extension for batch downloading free PDFs from Google Scholar",
+  "scripts": {
+    "generate-icons": "node scripts/generate-icons.js"
+  },
+  "dependencies": {},
+  "devDependencies": {}
+}

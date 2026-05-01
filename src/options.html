@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Scholar PDF Downloader - Settings</title>
+  <link rel="stylesheet" href="styles/options.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Scholar PDF Downloader</h1>
+
+    <div class="tabs">
+      <button class="tab-btn active" data-tab="settings">Settings</button>
+      <button class="tab-btn" data-tab="stats">Statistics</button>
+    </div>
+
+    <!-- Settings Tab -->
+    <div id="settings" class="tab-content active">
+      <section class="settings-section">
+        <h2>Download Settings</h2>
+
+        <div class="setting-group">
+          <label for="concurrency">Concurrent Downloads:</label>
+          <input type="number" id="concurrency" min="1" max="10" value="2">
+          <small>Number of papers to download simultaneously (default: 2)</small>
+        </div>
+
+        <div class="setting-group">
+          <label for="delayMs">Delay Between Downloads (ms):</label>
+          <input type="number" id="delayMs" min="100" max="10000" value="500">
+          <small>Wait time between starting each download (default: 500ms)</small>
+        </div>
+
+        <div class="setting-group">
+          <label for="rateLimitCooldown">Rate Limit Cooldown (minutes):</label>
+          <input type="number" id="rateLimitCooldown" min="1" max="60" value="10">
+          <small>Pause downloads when rate limited (429) (default: 10 min)</small>
+        </div>
+
+        <div class="setting-group">
+          <label for="downloadFolder">Download Folder:</label>
+          <input type="text" id="downloadFolder" value="scholar" readonly>
+          <small>PDFs saved to Downloads/{folder}/{query}/ (Note: Chrome limitation)</small>
+        </div>
+      </section>
+
+      <div class="button-group">
+        <button id="saveBtn" class="btn btn-primary">Save Settings</button>
+        <button id="resetBtn" class="btn btn-secondary">Reset to Defaults</button>
+        <span id="saveMessage" class="save-message"></span>
+      </div>
+    </div>
+
+    <!-- Statistics Tab -->
+    <div id="stats" class="tab-content">
+      <section class="stats-section">
+        <h2>Download Statistics</h2>
+
+        <div class="stats-grid">
+          <div class="stat-card">
+            <div class="stat-value" id="totalDownloaded">0</div>
+            <div class="stat-label">Successfully Downloaded</div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-value" id="totalSkipped">0</div>
+            <div class="stat-label">Skipped (Duplicates)</div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-value" id="totalFailed">0</div>
+            <div class="stat-label">Failed</div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-value" id="lastDownload">—</div>
+            <div class="stat-label">Last Download</div>
+          </div>
+        </div>
+
+        <div class="total-count">
+          <span>Total Papers Processed:</span>
+          <strong id="totalPapers">0</strong>
+        </div>
+      </section>
+
+      <div class="button-group">
+        <button id="exportBtn" class="btn btn-secondary">Export Stats</button>
+        <button id="clearStatsBtn" class="btn btn-danger">Clear Statistics</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="utils/helpers.js"></script>
+  <script src="utils/storage.js"></script>
+  <script src="options.js"></script>
+</body>
+</html>

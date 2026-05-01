@@ -1,0 +1,53 @@
+{
+  "manifest_version": 3,
+  "name": "Scholar PDF Downloader",
+  "version": "1.0.0",
+  "description": "Batch download free PDFs from Google Scholar search results with automatic organization and metadata extraction",
+  "permissions": [
+    "activeTab",
+    "scripting",
+    "downloads",
+    "storage"
+  ],
+  "host_permissions": [
+    "https://scholar.google.com/*",
+    "https://*.springer.com/*",
+    "https://*.researchgate.net/*",
+    "https://*.arxiv.org/*",
+    "https://*.acm.org/*",
+    "https://*.ieee.org/*",
+    "https://*.sciencedirect.com/*",
+    "https://*.jstor.org/*",
+    "https://*.pdf.gov/*",
+    "https://*/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://scholar.google.com/*"],
+      "js": ["src/utils/helpers.js", "src/content.js"]
+    },
+    {
+      "matches": ["https://*/*"],
+      "js": ["src/utils/helpers.js", "src/redirect-handler.js"],
+      "run_at": "document_start"
+    }
+  ],
+  "action": {
+    "default_popup": "src/popup.html",
+    "default_title": "Scholar PDF Downloader",
+    "default_icons": {
+      "16": "icons/icon16.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
+  },
+  "options_page": "src/options.html",
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  }
+}
