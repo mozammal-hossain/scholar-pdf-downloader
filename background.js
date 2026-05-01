@@ -130,17 +130,18 @@ async function downloadPdfViaRedirect(pdfUrl, downloadPath) {
       tabId = tab.id;
       console.log('[Background] Opened redirect URL in tab', tabId);
 
-      // Wait for page to load, then extract PDF URL
+      // Wait for page load + Cloudflare verification, then extract PDF URL
       setTimeout(async () => {
         if (downloadCompleted) return;
 
         try {
+          console.log('[Background] Extracting PDF URL from loaded page...');
           const result = await chrome.tabs.sendMessage(tabId, {
             type: 'extractPdfUrl'
           });
 
           if (result.success && result.pdfUrl) {
-            console.log('[Background] Got extracted PDF URL:', result.pdfUrl);
+            console.log('[Background] ✓ Extracted PDF URL:', result.pdfUrl);
             // Download the extracted PDF URL directly
             await downloadDirectPdf(result.pdfUrl, downloadPath);
             downloadCompleted = true;
@@ -161,7 +162,7 @@ async function downloadPdfViaRedirect(pdfUrl, downloadPath) {
         } catch (error) {
           console.log('[Background] Content script error:', error.message);
         }
-      }, 2500);
+      }, 8500);
 
     } catch (error) {
       clearTimeout(timeout);
