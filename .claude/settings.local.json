@@ -5,7 +5,13 @@
       "Bash(rtk find *)",
       "Bash(rtk sort *)",
       "Bash(node *)",
-      "Bash(rtk git *)"
+      "Bash(rtk git *)",
+      "Bash(rtk gh *)",
+      "Bash(gh auth *)",
+      "Bash(git config *)",
+      "Bash(git credential-cache *)",
+      "Bash(security delete-internet-password *)",
+      "Bash(gh repo *)"
     ]
   }
 }
