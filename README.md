@@ -1,5 +1,7 @@
 # Scholar PDF Downloader
 
+![Icon](icons/icon128.png)
+
 Download research papers from Google Scholar in bulk — automatically organized and saved to your computer.
 
 ---
@@ -98,8 +100,10 @@ For each search, you get:
 
 ---
 
-## Questions?
+## Questions or Issues?
 
 Check the Chrome download history (Ctrl+Shift+J or Cmd+Shift+J on Mac) if something seems wrong.
 
 The extension respects Google Scholar's rules — if it pauses, that's Google Scholar slowing things down, not a bug.
+
+**Found a bug or have a feature request?** [Create an issue](https://github.com/mozammal-hossain/scholar-pdf-downloader/issues/new)
